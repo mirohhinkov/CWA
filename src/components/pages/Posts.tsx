@@ -7,7 +7,7 @@ import {PostsContainer} from "../posts/PostsContainer";
 const Posts: React.FC<{context: any}> = ({context}) => {
     useEffect(() => {
         context.setActiveMenu('posts');
-    }, []);
+    }, [context]);
     return (
         <>
             <Header context={context} />

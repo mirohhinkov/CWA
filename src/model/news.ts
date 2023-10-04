@@ -1,14 +1,15 @@
 import NewsTypes from "./newsTypes";
 
 class News {
-
+    private _eventDate: Date | undefined;
     public constructor(
         private _id:string,
         private _title: string,
         private _description: string,
         private _imgFileName: string,
         private _imgAlt: string,
-        private _type: NewsTypes
+        private _type: NewsTypes,
+        private _tags: string[]
         ) {}
 
     get id(): string {
@@ -55,6 +56,19 @@ class News {
 
     set imgAlt(value: string) {
         this._imgAlt = value;
+    }
+
+    get tags(): string[] {
+        return this._tags;
+    }
+
+
+    get eventDate(): Date {
+        return this._eventDate as Date;
+    }
+
+    set eventDate(value: Date) {
+        this._eventDate = value;
     }
 }
 

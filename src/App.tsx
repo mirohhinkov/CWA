@@ -6,16 +6,25 @@ import Career from "./components/pages/Career";
 import Messages from "./components/pages/Messages";
 import Login from "./components/pages/Login";
 import Posts from "./components/pages/Posts";
+import SignUp from "./components/pages/SignUp";
 
 
 const App: React.FC = () => {
-    const [login, setLogin] = useState(false);
-    const [activeMenu, setActiveMenu] = useState('news')
+    const [activeMenu, setActiveMenu] = useState('news');
+    const [filter, setFilter] = useState({
+        news: '',
+        posts: '',
+        jobs: '',
+        connections: '',
+    })
+    const [user, setUser] = useState<any>(null);
     const context: any = {
-        login,
-        setLogin,
         activeMenu,
-        setActiveMenu
+        setActiveMenu,
+        filter,
+        setFilter,
+        user,
+        setUser
     }
 
     const router = createBrowserRouter([
@@ -42,6 +51,10 @@ const App: React.FC = () => {
         {
             path: "/login",
             element: <Login context={context} />
+        },
+        {
+            path: "/signup",
+            element: <SignUp context={context} />
         }
     ]);
 
