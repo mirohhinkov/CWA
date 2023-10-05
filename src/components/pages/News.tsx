@@ -3,10 +3,10 @@ import {Header} from "../parts/Header";
 import {SplitScreen} from "../SplitScreen";
 import {NewsContainer} from "../news/NewsContainer";
 import {Chat} from "../chat/Chat";
+import {IContext} from "../../model/types/IContext";
 
-const News: React.FC<{context: any}> = ({context}) => {
+const News: React.FC<{context: IContext}> = ({context}) => {
     useEffect(() => {
-        console.log(context.user)
         context.setActiveMenu('news');
     }, []);
     return (

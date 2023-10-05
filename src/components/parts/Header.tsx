@@ -16,7 +16,9 @@ export const Header:React.FC<{ context: any }> = ({context}) => (
           </li>
           <li> <Link className={context.activeMenu === 'posts' ? 'active' : ''} to="/posts">Posts</Link></li>
           <li> <Link className={context.activeMenu === 'career' ? 'active' : ''} to="/career">Career</Link></li>
-          <li> <Link className={context.activeMenu === 'messages' ? 'active' : ''} to="/messages">Messages</Link></li>
+          {context.user && (<li> <Link className={context.activeMenu === 'messages' ? 'active' : ''} to="/messages">Messages</Link></li>)}
+          {context.user && (<li> <Link className={context.activeMenu === 'connections' ? 'active' : ''} to="/connections">My connections</Link></li>)}
+          {context.user && (<li> <Link className={context.activeMenu === 'profile' ? 'active' : ''} to="/profile">Profile</Link></li>)}
           {!context.user && (<li><Link className={context.activeMenu === 'login' ? 'active' : ''} to="/login">Login</Link></li>)}
           {context.user && (<li><Link className={context.activeMenu === 'login' ? 'active' : ''} to="/login">Logout</Link></li>)}
         </ul>

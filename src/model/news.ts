@@ -1,4 +1,4 @@
-import NewsTypes from "./newsTypes";
+import NewsTypes from "./types/newsTypes";
 
 class News {
     private _eventDate: Date | undefined;

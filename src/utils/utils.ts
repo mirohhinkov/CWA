@@ -1,15 +1,31 @@
-import NewsTypes from "../model/newsTypes";
-import newsTypes from "../model/newsTypes";
+import NewsTypes from "../model/types/newsTypes";
+import firebase from "firebase/app";
+import User from "../model/user";
 
 export const getType = (type: string):  NewsTypes  => {
-    switch (type) {
-        case 'NEWS':
-            return NewsTypes.NEWS;
-        case 'EVENT':
-            return newsTypes.EVENT;
-        case 'COURSE':
-            return newsTypes.COURSE;
-        default:
-            return NewsTypes.NEWS;
-    }
+
+    if (['NEWS', 'EVENT', 'COURSE'].includes(type.trim().toUpperCase()))
+        return type.toUpperCase() as NewsTypes;
+    return NewsTypes.NEWS;
+
 }
+
+export const mapGoogleUserToUser = (googleUser: firebase.User): User => ({
+    admin: false,
+    imgAlt: 'profile picture',
+    id: googleUser.uid,
+    firstName: '',
+    lastName: '',
+    email: googleUser.email!,
+    altEmail: googleUser.displayName ? googleUser.displayName : '',
+    imgUrl: googleUser.photoURL ? googleUser.photoURL : '',
+    phoneNumber: googleUser.phoneNumber ? googleUser.phoneNumber : '',
+    city: '',
+    experience: [],
+    courseName: '',
+    startingYear: new Date().getFullYear(),
+    myGoals: '',
+    connections: []
+})
+
+

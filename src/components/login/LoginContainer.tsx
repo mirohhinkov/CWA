@@ -11,8 +11,7 @@ export const LoginContainer:React.FC<{ context: any }> = ( {context} ) => {
     const navigate = useNavigate()
     const submitHandler = async (event: SyntheticEvent) => {
         event.preventDefault()
-        const user = await login(email, password, context);
-        context.setUser(user);
+        await login(email, password, context);
         if (!error) {
             navigate('/news')
         }

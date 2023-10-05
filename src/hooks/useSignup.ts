@@ -1,5 +1,9 @@
 import  {useState} from "react";
-import { emailAuth } from "../firebase/config";
+import {appFirestore, emailAuth} from "../firebase/config";
+import {mapGoogleUserToUser} from "../utils/utils";
+import firebase from "firebase";
+import User from '../model/user';
+
 
 export const useSignUp = () => {
     const [error, setError] = useState('');
@@ -13,10 +17,16 @@ export const useSignUp = () => {
             //sign up user
             const responce = await emailAuth.createUserWithEmailAndPassword(email, password);
             if (!responce) throw new Error('Could not make sign up');
+            const {user} = responce;
             await responce.user!.updateProfile({ displayName: altEmail })
             setError('');
             setPending(false);
-            context.setUser(responce.user);
+
+            if (user) {
+                const localUser: User = mapGoogleUserToUser(user);
+                await appFirestore.collection('users').doc().set(localUser);
+                context.setUser(localUser);
+            }
         } catch(err: any) {
             setError(err.message);
             setPending(false)

@@ -7,6 +7,9 @@ import Messages from "./components/pages/Messages";
 import Login from "./components/pages/Login";
 import Posts from "./components/pages/Posts";
 import SignUp from "./components/pages/SignUp";
+import Connections from "./components/pages/Connections";
+import Profile from "./components/pages/Profile";
+import {IContext} from "./model/types/IContext";
 
 
 const App: React.FC = () => {
@@ -18,7 +21,7 @@ const App: React.FC = () => {
         connections: '',
     })
     const [user, setUser] = useState<any>(null);
-    const context: any = {
+    const context: IContext = {
         activeMenu,
         setActiveMenu,
         filter,
@@ -55,10 +58,16 @@ const App: React.FC = () => {
         {
             path: "/signup",
             element: <SignUp context={context} />
+        },
+        {
+            path: "/connections",
+            element: <Connections context={context} />
+        },
+        {
+            path: "/profile",
+            element: <Profile context={context} />
         }
     ]);
-
-
 
     return <RouterProvider router={router} />
 }

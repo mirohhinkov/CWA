@@ -3,8 +3,9 @@ import {Header} from "../parts/Header";
 import {SplitScreen} from "../SplitScreen";
 import {Chat} from "../chat/Chat";
 import {PostsContainer} from "../posts/PostsContainer";
+import {IContext} from "../../model/types/IContext";
 
-const Posts: React.FC<{context: any}> = ({context}) => {
+const Posts: React.FC<{context: IContext}> = ({context}) => {
     useEffect(() => {
         context.setActiveMenu('posts');
     }, [context]);

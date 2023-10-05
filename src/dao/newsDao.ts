@@ -2,7 +2,7 @@ import { appFirestore } from "../firebase/config";
 
 import INewsDao from "./iNewsDao";
 import News from "../model/news";
-import RowNews from "../model/rowNews";
+import RowNews from "../model/types/rowNews";
 import {getType} from "../utils/utils";
 
 export default class NewsDao implements INewsDao {

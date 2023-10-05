@@ -4,8 +4,9 @@ import {SplitScreen} from "../SplitScreen";
 import {Chat} from "../chat/Chat";
 import {LoginContainer} from "../login/LoginContainer";
 import {LogOutContainer} from "../login/LogOutContainer";
+import {IContext} from "../../model/types/IContext";
 
-const Login: React.FC<{context: any}> = ({context}) => {
+const Login: React.FC<{context: IContext}> = ({context}) => {
     useEffect(() => {
         if (!context.user) {
             context.setActiveMenu('login');

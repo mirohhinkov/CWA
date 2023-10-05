@@ -3,8 +3,9 @@ import {Header} from "../parts/Header";
 import {SplitScreen} from "../SplitScreen";
 import {Chat} from "../chat/Chat";
 import {CareerContainer} from "../career/CareerContainer";
+import {IContext} from "../../model/types/IContext";
 
-const Career: React.FC<{context: any}> = ({context}) => {
+const Career: React.FC<{context: IContext}> = ({context}) => {
     useEffect(() => {
         context.setActiveMenu('career');
     }, []);

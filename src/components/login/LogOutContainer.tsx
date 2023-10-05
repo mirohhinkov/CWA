@@ -1,5 +1,5 @@
 import {LeftPaneHeader} from "../styling/LeftPaneHeader";
-import React, {SyntheticEvent, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom";
 import {emailAuth} from "../../firebase/config";
 
